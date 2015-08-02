@@ -1,7 +1,5 @@
 /*
 
-	Downloaded for RactiveJS Plugin from https://raw.githubusercontent.com/ractivejs/ractive-events-hover/master/ractive-events-hover.js
-
 	ractive-events-hover
 	====================
 

@@ -1,11 +1,3 @@
-/**
-
-	v0.0.1
-	Downloaded for RactiveJS Plugin from https://github.com/svapreddy/ractive-events-typing/blob/master/ractive-events-typing.js
-
-
-**/
-
 ;
 (function (global, factory) {
 

@@ -1,11 +1,3 @@
-/**
-
-	v0.1.3
-	Downloaded for RactiveJS Plugin from https://raw.githubusercontent.com/ractivejs/ractive-events-keys/master/dist/ractive-events-keys.js
-
-
-**/
-
 (function (root, factory) {
     if (typeof define === "function" && define.amd) {
         define(["ractive"], factory);

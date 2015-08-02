@@ -1,12 +1,3 @@
-/**
-
-	Downloaded for RactiveJS Plugin from https://cdn.rawgit.com/hammerjs/hammer.js/2.0.1/hammer.js
-
-
-**/
-
-
-
 (function(window, undefined) {
   'use strict';
 
