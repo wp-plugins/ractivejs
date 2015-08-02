@@ -3,7 +3,7 @@
  * Plugin Name: RactiveJS
  * Plugin URI: http://www.fuzzguard.com.au/plugins/ractive-js
  * Description: Adds RactiveJS FrameWork library to WordPress
- * Version: 1.0.0
+ * Version: 1.1
  * Author: Benjamin Guy
  * Author URI: http://www.fuzzguard.com.au
  * Text Domain: ractive-js
@@ -40,42 +40,67 @@ if ( ! function_exists( 'is_admin' ) ) {
 
 
 
-
 /**
 * Create class ractiveJS() to prevent any function name conflicts with other WordPress plugins or the WordPress core.
 * @since 0.1
 */
 class ractiveJS {
 
-        /**
-        * Loads localization files for each language
-        * @since 1.3
-        */
-        function _action_init()
-        {
-                // Localization
-                load_plugin_textdomain('style-admin', false, 'style-admin/lang/');
-        }
 
 
         /**
-        * Adds the custom logo to the admin panel login page overwritting the default CSS
-        * @since 1.2
+        * Return the plugin URL
+        * @since 1.0
         */
-        function register_js_file()
-        {
-		wp_register_script ('ractive-js', WP_PLUGIN_URL.'/ractive-js/ractive.js', false, '0.7.3', true);
-		wp_register_script ('ractive-hover', WP_PLUGIN_URL.'/ractive-js/plugins/hover/ractive-hover.js', array('ractive-js'), '0.1.1', true);
-		wp_register_script ('ractive-keys', WP_PLUGIN_URL.'/ractive-js/plugins/keys/ractive-keys.js', array('ractive-js'), '0.2.1', true);
-		wp_register_script ('ractive-mousewheel', WP_PLUGIN_URL.'/ractive-js/plugins/mousewheel/ractive-mousewheel.js', array('ractive-js'), '0.1.1', true);
-		wp_register_script ('ractive-resize', WP_PLUGIN_URL.'/ractive-js/plugins/resize/ractive-resize.js', array('ractive-js'), '0.1.3', true);
-		wp_register_script ('ractive-tap', WP_PLUGIN_URL.'/ractive-js/plugins/tap/ractive-taps.js', array('ractive-js'), '0.2.0', true);
-		wp_register_script ('ractive-touch-hammer', WP_PLUGIN_URL.'/ractive-js/plugins/touch/hammer.js', false, '0.4.0', true);
-		wp_register_script ('ractive-touch', WP_PLUGIN_URL.'/ractive-js/plugins/touch/ractive-touch.js', array('ractive-js', 'ractive-touch-hammer'), '0.4.0', true);
-		wp_register_script ('ractive-typing', WP_PLUGIN_URL.'/ractive-js/plugins/typing/ractive-typing.js', array('ractive-js'), '0.0.1', true);
-		wp_register_script ('ractive-viewport', WP_PLUGIN_URL.'/ractive-js/plugins/viewport/ractive-viewport.js', array('ractive-js'), '0.0.1', true);
+	function getPluginURL() {
+		return plugins_url().'/ractive-js';
 	}
 
+        /**
+        * Register the required RactiveJS files
+        * @since 1.0
+        */
+        function register_js_files()
+        {
+		wp_register_script ('ractive-js', $this->getPluginURL().'/ractive.min.js', false, '0.7.3', true);
+
+		$this->register_events_scripts();
+		$this->register_transitions_scripts();
+	}
+
+
+        /**
+        * Register the RactiveJS scripts for Events (http://docs.ractivejs.org/latest/events-overview)
+        * @since 1.1
+        */
+
+	function register_events_scripts() {
+                wp_register_script ('ractive-hover', $this->getPluginURL().'/plugins/hover/ractive-hover.min.js', array('ractive-js'), '0.1.1', true); #https://raw.githubusercontent.com/ractivejs/ractive-events-hover/master/ractive-events-hover.js
+                wp_register_script ('ractive-keys', $this->getPluginURL().'/plugins/keys/ractive-keys.min.js', array('ractive-js'), '0.2.1', true); #https://raw.githubusercontent.com/ractivejs/ractive-events-keys/master/dist/ractive-events-keys.js
+                wp_register_script ('ractive-mousewheel', $this->getPluginURL().'/plugins/mousewheel/ractive-mousewheel.min.js', array('ractive-js'), '0.1.1', true); #https://raw.githubusercontent.com/ractivejs/ractive-events-mousewheel/master/ractive-events-mousewheel.js
+                wp_register_script ('ractive-resize', $this->getPluginURL().'/plugins/resize/ractive-resize.min.js', array('ractive-js'), '0.1.3', true); #https://raw.githubusercontent.com/smallhadroncollider/ractive.events.resize/master/ractive.events.resize.js
+                wp_register_script ('ractive-tap', $this->getPluginURL().'/plugins/tap/ractive-taps.min.js', array('ractive-js'), '0.2.0', true); #http://ractivejs.github.io/ractive-events-tap/ractive-events-tap.js
+                wp_register_script ('ractive-touch-hammer', $this->getPluginURL().'/plugins/touch/hammer.min.js', false, '0.4.0', true); #https://cdn.rawgit.com/hammerjs/hammer.js/2.0.1/hammer.js
+                wp_register_script ('ractive-touch',$this->getPluginURL().'/plugins/touch/ractive-touch.min.js', array('ractive-js', 'ractive-touch-hammer'), '0.4.0', true); #https://raw.githubusercontent.com/rstacruz/ractive-touch/master/index.js
+                wp_register_script ('ractive-typing', $this->getPluginURL().'/plugins/typing/ractive-typing.min.js', array('ractive-js'), '0.0.1', true); #https://raw.githubusercontent.com/svapreddy/ractive-events-typing/master/ractive-events-typing.js
+                wp_register_script ('ractive-viewport', $this->getPluginURL().'/plugins/viewport/ractive-viewport.min.js', array('ractive-js'), '0.0.1', true); #https://raw.githubusercontent.com/svapreddy/ractive-event-viewport/master/lib/in-view.js
+	}
+
+        /**
+        * Register the RactiveJS scripts for Transitions (http://docs.ractivejs.org/latest/transitions)
+        * @since 1.1
+        */
+
+        function register_transitions_scripts() {
+                wp_register_script ('ractive-fade', $this->getPluginURL().'/plugins/fade/ractive-fade.min.js', array('ractive-js'), '0.2.1', true); #https://raw.githubusercontent.com/ractivejs/ractive-transitions-fade/master/dist/ractive-transitions-fade.js 
+		wp_register_script ('ractive-fly', $this->getPluginURL().'/plugins/fly/ractive-fly.min.js', array('ractive-js'), '0.1.3', true); #http://ractivejs.github.io/ractive-transitions-fly/ractive-transitions-fly.js
+                wp_register_script ('ractive-scale', $this->getPluginURL().'/plugins/scale/ractive-transitions-scale.min.js', array('ractive-js'), '0.1.0', true); #https://raw.githubusercontent.com/1N50MN14/Ractive-transitions-scale/master/Ractive-transitions-scale.js
+
+                wp_register_script ('ractive-slide', $this->getPluginURL().'/plugins/slide/ractive-transitions-slide.min.js', array('ractive-js'), '0.2.1', true); #https://raw.githubusercontent.com/ractivejs/ractive-transitions-slide/master/src/ractive-transitions-slide.js
+                wp_register_script ('ractive-slide-horizontal', $this->getPluginURL().'/plugins/slide/ractive-transitions-slidehorizontal.min.js', array('ractive-js'), '1.0.0', true); #https://raw.githubusercontent.com/zenflow/ractive-transitions-slidehorizontal/master/src/ractive-transitions-slidehorizontal.js
+		wp_register_script ('ractive-typewriter', $this->getPluginURL().'/plugins/typewriter/ractive-transitions-typewriter.min.js', array('ractive-js'), '1.0.0', true); #https://raw.githubusercontent.com/RactiveJS/Ractive-transitions-typewriter/master/Ractive-transitions-typewriter.js
+
+	}
 
 } //End of ractiveJS() class
 
@@ -92,5 +117,5 @@ $ractive = new ractiveJS();
 * Load RactiveJS FrameWork
 * @since 0.1
 */
-	add_action( 'wp_enqueue_scripts', array($ractive, 'register_js_file'), 5);
+	add_action( 'wp_enqueue_scripts', array($ractive, 'register_js_files'), 5);
 ?>

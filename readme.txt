@@ -3,8 +3,8 @@ Contributors: fuzzguard
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G8SPGAVH8RTBU
 tags: framework, library, lib, javascript
 Requires at least: 3.8
-Tested up to: 4.2.2
-Stable tag: 1.0
+Tested up to: 4.2.3
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,37 +40,58 @@ This plugin is just a helper plugin to register the RactiveJS framework scripts 
 
 How to Enqueue the RactiveJS Framework scripts:
 
-	wp_enqueue_script('ractive-js');		RactiveJS Framework
-	wp_enqueue_script('ractive-hover');		Ractive.js hover event plugin
-	wp_enqueue_script('ractive-keys');		Ractive.js keys event plugin
-	wp_enqueue_script('ractive-mousewheel');	Ractive.js mousewheel event plugin
-	wp_enqueue_script('ractive-resize');		Ractive.events.resize
-	wp_enqueue_script('ractive-tap');		Ractive.js tap event plugin
-	wp_enqueue_script('ractive-touch-hammer');	ractive-touch
-	wp_enqueue_script('ractive-touch');		ractive-touch
-	wp_enqueue_script('ractive-typing');		ractive-events-typing
-	wp_enqueue_script('ractive-viewport');		ractive-event-viewport
+        wp_enqueue_script('ractive-js');                RactiveJS Framework
+        wp_enqueue_script('ractive-hover');             Ractive.js hover event plugin
+        wp_enqueue_script('ractive-keys');              Ractive.js keys event plugin
+        wp_enqueue_script('ractive-mousewheel');        Ractive.js mousewheel event plugin
+        wp_enqueue_script('ractive-resize');            Ractive.events.resize
+        wp_enqueue_script('ractive-tap');               Ractive.js tap event plugin
+        wp_enqueue_script('ractive-touch-hammer');      ractive-touch
+        wp_enqueue_script('ractive-touch');             ractive-touch
+        wp_enqueue_script('ractive-typing');            ractive-events-typing
+        wp_enqueue_script('ractive-viewport');          ractive-event-viewport
+	wp_enqueue_script('ractive-fade');		Ractive.js fade transition plugin
+	wp_enqueue_script('ractive-fly');		Ractive.js fly transition plugin
+	wp_enqueue_script('ractive-scale');		Ractive.js scale transition plugin
+	wp_enqueue_script('ractive-slide');		Ractive.js slide transition plugin
+	wp_enqueue_script('ractive-slide-horizontal');	Horizontal slide transition plugin for Ractive
+	wp_enqueue_script('ractive-typewriter');	Ractive.js typewriter transition plugin
 
 
 = Script Dependancies =
 
 Each of the scripts have dependancies.  They are all queued as dependancies in the plugin.  So if you forget to load the dependancy it will be automatically loaded for you.
 
-	ractive-js		No Depenancies
-	ractive-hover		ractive-js
-	ractive-keys		ractive-js
-	ractive-mousewheel	ractive-js
-	ractive-resize		ractive-js
-	ractive-tap		ractive-js
-	ractive-touch-hammer	ractive-js
-	ractive-touch		ractive-js, ractive-touch-hammer
-	ractive-typing		ractive-js
-	ractive-viewport	ractive-js
+	ractive-js			No Depenancies
+	ractive-hover			ractive-js
+	ractive-keys			ractive-js
+	ractive-mousewheel		ractive-js
+	ractive-resize			ractive-js
+	ractive-tap			ractive-js
+	ractive-touch-hammer		ractive-js
+	ractive-touch			ractive-js, ractive-touch-hammer
+	ractive-typing			ractive-js
+	ractive-viewport		ractive-js
+        ractive-fade			ractive-js
+        ractive-fly			ractive-js
+        ractive-scale			ractive-js
+        ractive-slide			ractive-js
+        ractive-slide-horizontal	ractive-js
+        ractive-typewriter		ractive-js
 
 
 == Screenshots ==
 
 == Changelog ==
+
+= 1.1 =
+* Added getPluginURL() function to return Globally the plugin URL.  References plugin_url().'/ractive-js'
+* Added transitions to RactiveJS Plugin
+* Added transitions scripts to new function register_transitions_scripts()
+* Moved events scripts to the register_events_scripts() function
+* Minified all transitions scripts
+* Minified all events scripts
+* Minified the core RactiveJS file: ractive.js
 
 = 1.0 =
 * Gold release

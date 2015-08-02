@@ -1,7 +1,5 @@
 /*
 
-	Downloaded for RactiveJS Plugin from https://raw.githubusercontent.com/ractivejs/ractive-events-mousewheel/master/ractive-events-mousewheel.js
-
 	ractive-events-mousewheel
 	=========================
 

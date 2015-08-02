@@ -1,11 +1,3 @@
-/**
-
-	v0.0.1
-	Downloaded for RactiveJS Plugin from http://svapreddy.github.io/ractive-event-viewport/
-
-
-**/
-
 (function ( global, factory ) {
 
 	'use strict';

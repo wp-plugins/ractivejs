@@ -1,11 +1,3 @@
-/**
-
-	v0.2.1
-	Downloaded for RactiveJS Plugin from https://raw.githubusercontent.com/ractivejs/ractive-events-keys/master/dist/ractive-events-keys.js
-
-
-**/
-
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
