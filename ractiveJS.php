@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name: RactiveJS
- * Plugin URI: http://www.fuzzguard.com.au/plugins/ractive-js
+ * Plugin URI: http://www.fuzzguard.com.au/plugins/ractivejs
  * Description: Adds RactiveJS FrameWork library to WordPress
  * Version: 1.1
  * Author: Benjamin Guy
  * Author URI: http://www.fuzzguard.com.au
- * Text Domain: ractive-js
+ * Text Domain: ractivejs
  * License: GPL2
 
     Copyright 2014  Benjamin Guy  (email: beng@fuzzguard.com.au)
@@ -53,7 +53,7 @@ class ractiveJS {
         * @since 1.0
         */
 	function getPluginURL() {
-		return plugins_url().'/ractive-js';
+		return plugins_url().'/ractivejs';
 	}
 
         /**
